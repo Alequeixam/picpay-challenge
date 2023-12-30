@@ -1,6 +1,6 @@
-package com.alex.picpaychallenge.transaction;
+package com.alex.picpaychallenge.domain.transaction;
 
-import com.alex.picpaychallenge.domain.User;
+import com.alex.picpaychallenge.domain.user.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

@@ -1,11 +1,9 @@
 package com.alex.picpaychallenge.controller;
 
-import com.alex.picpaychallenge.domain.User;
-import com.alex.picpaychallenge.domain.dto.UserDTO;
-import com.alex.picpaychallenge.domain.dto.UserResponse;
+import com.alex.picpaychallenge.domain.user.dto.UserDTO;
+import com.alex.picpaychallenge.domain.user.dto.UserResponse;
 import com.alex.picpaychallenge.service.UserService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

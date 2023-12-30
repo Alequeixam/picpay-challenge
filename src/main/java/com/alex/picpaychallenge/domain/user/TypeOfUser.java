@@ -1,4 +1,4 @@
-package com.alex.picpaychallenge.domain;
+package com.alex.picpaychallenge.domain.user;
 
 public enum TypeOfUser {
     COMMON,

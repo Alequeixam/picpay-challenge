@@ -1,6 +1,6 @@
-package com.alex.picpaychallenge.domain.dto;
+package com.alex.picpaychallenge.domain.user.dto;
 
-import com.alex.picpaychallenge.domain.TypeOfUser;
+import com.alex.picpaychallenge.domain.user.TypeOfUser;
 
 import java.math.BigDecimal;
 

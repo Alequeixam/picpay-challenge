@@ -1,6 +1,6 @@
-package com.alex.picpaychallenge.domain;
+package com.alex.picpaychallenge.domain.user;
 
-import com.alex.picpaychallenge.domain.dto.UserDTO;
+import com.alex.picpaychallenge.domain.user.dto.UserDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,8 +1,8 @@
 package com.alex.picpaychallenge.service;
 
-import com.alex.picpaychallenge.domain.User;
-import com.alex.picpaychallenge.domain.dto.UserDTO;
-import com.alex.picpaychallenge.domain.dto.UserResponse;
+import com.alex.picpaychallenge.domain.user.User;
+import com.alex.picpaychallenge.domain.user.dto.UserDTO;
+import com.alex.picpaychallenge.domain.user.dto.UserResponse;
 import com.alex.picpaychallenge.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
