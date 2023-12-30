@@ -4,6 +4,8 @@ import com.alex.picpaychallenge.domain.user.TypeOfUser;
 import com.alex.picpaychallenge.domain.user.User;
 import com.alex.picpaychallenge.domain.user.dto.UserDTO;
 import com.alex.picpaychallenge.domain.user.dto.UserResponse;
+import com.alex.picpaychallenge.exception.DocumentAlreadyExistsException;
+import com.alex.picpaychallenge.exception.EmailAlreadyExistsException;
 import com.alex.picpaychallenge.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,14 @@ public class UserService {
         repository.save(user);
     }
     public UserResponse createUser(UserDTO userDTO) {
+        if (repository.existsByEmail(userDTO.email())) {
+            throw new EmailAlreadyExistsException("This email is already registered.");
+        }
+        if (repository.existsByDocument(userDTO.document())) {
+            throw new DocumentAlreadyExistsException("This document is already registered.");
+        }
+
+
         var user = new User(userDTO);
         repository.save(user);
         return mapToResponse(user);
