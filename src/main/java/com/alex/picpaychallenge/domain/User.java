@@ -1,5 +1,6 @@
 package com.alex.picpaychallenge.domain;
 
+import com.alex.picpaychallenge.domain.dto.UserDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,6 +31,15 @@ public class User {
 
     private String password;
 
-    private TypeOfUser typeofUser;
+    private TypeOfUser typeOfUser;
     private BigDecimal balance;
+
+    public User(UserDTO dto) {
+        this.name = dto.name();
+        this.document = dto.document();
+        this.email = dto.email();
+        this.password = dto.password();
+        this.typeOfUser = dto.typeOfUser();
+        this.balance = dto.balance();
+    }
 }
