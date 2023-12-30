@@ -13,4 +13,9 @@ public class GlobalExceptionHandler {
         var response = new ErrorResponse(ex.getMessage(), HttpStatus.CONFLICT.value());
         return ResponseEntity.status(response.statusCode()).body(response);
     }
+    @ExceptionHandler(DocumentAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponse> documentAlreadyExists(DocumentAlreadyExistsException ex) {
+        var response = new ErrorResponse(ex.getMessage(), HttpStatus.CONFLICT.value());
+        return ResponseEntity.status(response.statusCode()).body(response);
+    }
 }

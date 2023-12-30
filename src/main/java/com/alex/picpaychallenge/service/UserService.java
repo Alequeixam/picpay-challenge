@@ -25,10 +25,10 @@ public class UserService {
     }
     public UserResponse createUser(UserDTO userDTO) {
         if (repository.existsByEmail(userDTO.email())) {
-            throw new EmailAlreadyExistsException("This email is already registered.");
+            throw new EmailAlreadyExistsException("This email is already registered. Please check and try again.");
         }
         if (repository.existsByDocument(userDTO.document())) {
-            throw new DocumentAlreadyExistsException("This document is already registered.");
+            throw new DocumentAlreadyExistsException("This document is already registered. Please check and try again.");
         }
 
 
