@@ -18,4 +18,10 @@ public class GlobalExceptionHandler {
         var response = new ErrorResponse(ex.getMessage(), HttpStatus.CONFLICT.value());
         return ResponseEntity.status(response.statusCode()).body(response);
     }
+    @ExceptionHandler(EmailServiceDownException.class)
+    public ResponseEntity<ErrorResponse> emailServiceDown(EmailServiceDownException ex) {
+        var response = new ErrorResponse(ex.getMessage(), HttpStatus.SERVICE_UNAVAILABLE.value());
+        return ResponseEntity.status(response.statusCode()).body(response);
+    }
+
 }
