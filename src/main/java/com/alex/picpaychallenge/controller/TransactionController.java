@@ -1,7 +1,7 @@
 package com.alex.picpaychallenge.controller;
 
 import com.alex.picpaychallenge.domain.transaction.Transaction;
-import com.alex.picpaychallenge.domain.transaction.TransactionDTO;
+import com.alex.picpaychallenge.domain.transaction.dto.TransactionDTO;
 import com.alex.picpaychallenge.service.TransactionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

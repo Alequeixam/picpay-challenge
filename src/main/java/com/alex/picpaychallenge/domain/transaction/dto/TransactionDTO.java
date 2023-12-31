@@ -1,4 +1,4 @@
-package com.alex.picpaychallenge.domain.transaction;
+package com.alex.picpaychallenge.domain.transaction.dto;
 
 import java.math.BigDecimal;
 

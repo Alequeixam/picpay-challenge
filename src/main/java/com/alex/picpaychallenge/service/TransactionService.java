@@ -1,8 +1,7 @@
 package com.alex.picpaychallenge.service;
 
 import com.alex.picpaychallenge.domain.transaction.Transaction;
-import com.alex.picpaychallenge.domain.transaction.TransactionDTO;
-import com.alex.picpaychallenge.domain.user.TypeOfUser;
+import com.alex.picpaychallenge.domain.transaction.dto.TransactionDTO;
 import com.alex.picpaychallenge.repository.TransactionRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -15,11 +14,13 @@ import java.util.Map;
 public class TransactionService {
     private final TransactionRepository transactionRepository;
     private final UserService userService;
-    private RestTemplate restTemplate;
+    private final NotificationService notificationService;
+    private final RestTemplate restTemplate;
 
-    public TransactionService(TransactionRepository transactionRepository, UserService userService, RestTemplate restTemplate) {
+    public TransactionService(TransactionRepository transactionRepository, UserService userService, NotificationService notificationService, RestTemplate restTemplate) {
         this.transactionRepository = transactionRepository;
         this.userService = userService;
+        this.notificationService = notificationService;
         this.restTemplate = restTemplate;
     }
 
@@ -44,7 +45,8 @@ public class TransactionService {
         userService.saveUser(payer);
         userService.saveUser(payee);
 
-
+        notificationService.sendNotification(payer, String.format("Transaction to %s completed successfully!", payee.getName()));
+        notificationService.sendNotification(payee, String.format("Transaction received from %s", payer.getName()));
 
         return transactionRepository.save(transaction);
     }
