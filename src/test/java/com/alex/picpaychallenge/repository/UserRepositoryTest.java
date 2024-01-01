@@ -4,6 +4,7 @@ import com.alex.picpaychallenge.domain.user.TypeOfUser;
 import com.alex.picpaychallenge.domain.user.User;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.test.context.ActiveProfiles;
 
 import java.math.BigDecimal;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DataJpaTest
@@ -35,18 +37,35 @@ class UserRepositoryTest {
     }
 
     @Test
-    void existsByEmail() {
+    @DisplayName("User with specific email exists")
+    void existsByEmailSuccess() {
         startUser();
-        var foundUser = userRepository.existsByEmail("jorge@gmail.com");
+        var foundUser = userRepository.existsByEmail(EMAIL);
         assertTrue(foundUser);
+    }
+    @Test
+    @DisplayName("User with specific email does not exist")
+    void existsByEmailFail() {
+        startUser();
+        var foundUser = userRepository.existsByEmail("alex@gmail.com");
+        assertFalse(foundUser);
     }
 
     @Test
-    void existsByDocument() {
+    @DisplayName("User with specific document exists")
+    void existsByDocumentSuccess() {
         startUser();
         var foundUser = userRepository.existsByDocument(DOCUMENT);
         assertTrue(foundUser);
     }
+    @Test
+    @DisplayName("User with specific document does not exist")
+    void existsByDocumentFail() {
+        startUser();
+        var foundUser = userRepository.existsByDocument("98765432155");
+        assertFalse(foundUser);
+    }
+
 
     void startUser() {
         User savedUser = new User(ID, NAME, DOCUMENT, EMAIL, PASSWORD, TYPE_OF_USER, BALANCE);
